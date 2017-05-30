@@ -89,6 +89,9 @@ bool KIFlyTo::update(const tum_ardrone::filter_stateConstPtr statePtr)
 		reached = true;
 		reachedAtClock = getMS();
 		printf("target reached initially!\n");
+		//Gruppe 14 - Thomas: Start
+		controller->node->publishCommand("target reached initially");
+		//Gruppe 14 - Thomas: Finish
 	}
 
 	// if too far away again: revoke reached status...

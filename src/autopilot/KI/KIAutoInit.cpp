@@ -160,8 +160,9 @@ bool KIAutoInit::update(const tum_ardrone::filter_stateConstPtr statePtr)
 				controller->setTarget(DronePosition(
 									TooN::makeVector(statePtr->x,statePtr->y,statePtr->z),statePtr->yaw));
 				node->sendControlToDrone(controller->update(statePtr));
-				stage = DONE;
-				return true;
+				stage = WAIT_END;
+				stageStarted = getMS();
+				return false;
 			}
 
 			// am i stil waiting?
@@ -178,6 +179,11 @@ bool KIAutoInit::update(const tum_ardrone::filter_stateConstPtr statePtr)
 			stageStarted = getMS();
 			stage = WAIT_FOR_FIRST;
 			node->sendControlToDrone(node->hoverCommand);
+			return false;
+		case WAIT_END:
+			if(getMS() - stageStarted >= 3000){
+				stage = DONE;
+			}
 			return false;
 		case DONE:
 			node->sendControlToDrone(controller->update(statePtr));

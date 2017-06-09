@@ -26,7 +26,8 @@
 class KIAutoInit : public KIProcedure
 {
 private:
-	enum {NONE, STARTED, WAIT_FOR_FIRST, TOOK_FIRST, WAIT_FOR_SECOND, DONE} stage;
+	//GRUPPE 14 - Thomas Bech Madsen, added WAIT_END
+	enum {NONE, STARTED, WAIT_FOR_FIRST, TOOK_FIRST, WAIT_FOR_SECOND, DONE, WAIT_END} stage;
 	int stageStarted;
 	bool nextUp;
 	bool resetMap;

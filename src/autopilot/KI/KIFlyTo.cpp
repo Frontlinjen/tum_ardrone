@@ -90,7 +90,7 @@ bool KIFlyTo::update(const tum_ardrone::filter_stateConstPtr statePtr)
 		reachedAtClock = getMS();
 		printf("target reached initially!\n");
 		//Gruppe 14 - Thomas: Start
-		controller->node->publishCommand("target reached initially");
+		controller->node->publishCommand("\n\n\ntarget reached initially\n\n\n");
 		//Gruppe 14 - Thomas: Finish
 	}
 
